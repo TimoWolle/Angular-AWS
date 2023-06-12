@@ -1,3 +1,9 @@
-<p class="todo-list-title">Meine ToDos</p>
+<ul class="todo-list-title">
+  <li *ngFor="let todo of todos">
+    <a routerLink="/todo/{{todo.id}}">
+      <span class="badge">{{todo.id}}</span> {{todo.title}}
+    </a>
+  </li>
+</ul>
 
-<todo *ngFor="let todo of todos" [todo]="todo"></todo>
+
