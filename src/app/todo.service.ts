@@ -36,26 +36,13 @@ export class TodoService {
       const index = todos.findIndex(existingTodo => existingTodo.id === todo.id);
       if (index !== -1) {
         todos[index] = todo;
+      }else{
+        todos.push(todo)
       }
-    } else {
-      // Wenn das Todo keine ID hat, generiere eine neue ID und füge es der Liste hinzu
-      todo.id = this.generateUniqueId();
-      todos.push(todo);
     }
   }
-  private generateUniqueId(): number {
+  generateUniqueToDoId(): number {
     const highestId = todos.reduce((maxId, todo) => Math.max(maxId, todo.id || 0), 0);
     return highestId + 1;
-  }
-
-  addTodoToTodos(todo: any) {
-    todos.push(todo);
-  }
-
-  updateTodoInTodos(updatedTodo: any) {
-    const index = todos.findIndex(todo => todo.id === updatedTodo.id);
-    if (index !== -1) {
-      todos[index] = updatedTodo;
-    }
   }
 }

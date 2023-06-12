@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../../todo.service';
 import {todo} from "../../entity/todo";
 import {ActivatedRoute} from "@angular/router";
+import {todos} from "../../../todos";
 
 @Component({
   selector: 'app-todo-form',
@@ -9,7 +10,7 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./todo-form.component.css']
 })
 export class TodoFormComponent implements OnInit {
-  todo:todo={title:"", id:0, status:false};
+  todo:todo={title:"", id:this.todoService.generateUniqueToDoId(), status:false};
 
   constructor(
       private todoService: TodoService,
@@ -25,7 +26,7 @@ export class TodoFormComponent implements OnInit {
   }
 
   checkEdit(){
-    let id = this.route.snapshot.params['id']
+    let id = Number(this.route.snapshot.paramMap.get('id'))
     if (this.route.snapshot.url.join('/') === 'todo/' + id + '/edit') {
       this.todoService.getToDoById(id)
         .subscribe(todo => this.todo = todo);
