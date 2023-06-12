@@ -1,11 +1,23 @@
 .todo {
-  width: fit-content;
-  margin: 10px;
-  padding: 10px;
-  display: block;
+  margin-bottom: 10px;
+}
 
-  font-family: sans-serif;
+.todo div {
+  margin-bottom: 5px;
+}
 
-  border: 1px solid silver;
-  border-radius: 10px;
+.todo .todo-id {
+  font-weight: bold;
+}
+
+.todo button {
+  margin-top: 20px;
+  background-color: #eee;
+  padding: 1rem;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.todo button:hover {
+  background-color: #0056b3;
 }

@@ -17,4 +17,3 @@ export const todos: todo[] = [
     "status": true
   }
 ]
-

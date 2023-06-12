@@ -21,16 +21,25 @@ export class ToDoComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    this.getToDos();
+    this.getToDo();
   }
 
-  getToDos(): void {
+  getToDo(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.todoService.getToDo(id)
+    this.todoService.getToDoById(id)
       .subscribe(todo => this.todo = todo);
   }
 
   goBack(): void {
     this.location.back()
+  }
+
+  edit(): void {
+    this.location.back()
+  }
+
+  delete(id: number): void {
+    this.todoService.deleteToDoById(id);
+    this.goBack();
   }
 }
