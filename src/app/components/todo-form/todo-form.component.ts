@@ -10,7 +10,7 @@ import {todos} from "../../../todos";
   styleUrls: ['./todo-form.component.css']
 })
 export class TodoFormComponent implements OnInit {
-  todo:todo={title:"", id:this.todoService.generateUniqueToDoId(), status:false};
+  todo: todo = new todo(0, "", "IN_PROGRESS");
 
   constructor(
       private todoService: TodoService,
@@ -20,15 +20,21 @@ export class TodoFormComponent implements OnInit {
     this.checkEdit()
   }
   onSubmit() {
-    this.todoService.saveTodoToTodos(this.todo);
+    if(this.todo.id == 0){
+      this.todoService.addTodo(this.todo)
+    }else{
+      this.todoService.updateTodo(this.todo)
+    }
 
-    this.todo={title:"", id:0, status:false};
+    //this.todoService.saveTodoToTodos(this.todo);
+
+    this.todo= new todo(0, "", "IN_PROGRESS");
   }
 
   checkEdit(){
     let id = Number(this.route.snapshot.paramMap.get('id'))
     if (this.route.snapshot.url.join('/') === 'todo/' + id + '/edit') {
-      this.todoService.getToDoById(id)
+      this.todoService.getTodoByID(id)
         .subscribe(todo => this.todo = todo);
     }
   }

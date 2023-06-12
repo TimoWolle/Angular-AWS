@@ -12,8 +12,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class TodoListComponent implements OnInit{
 
-  todos: todo[] = todos;
-
+  todos: todo[] = [] ;
 
   constructor(
     private todoService: TodoService
@@ -23,8 +22,8 @@ export class TodoListComponent implements OnInit{
     this.getToDos();
   }
 
-
   getToDos(): void {
-    this.todoService.getToDos();
+    this.todoService.getTodos().subscribe(todo => this.todos = todo)
+    //this.todoService.getToDos();
   }
 }

@@ -1,20 +1,20 @@
-.todo-list-title {
+.todo-list-titel {
   margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
   width: 15em;
 }
 
-.todo-list-title li {
+.todo-list-titel li {
   position: relative;
   cursor: pointer;
 }
 
-.todo-list-title li:hover {
+.todo-list-titel li:hover {
   left: .1em;
 }
 
-.todo-list-title a {
+.todo-list-titel a {
   color: #333;
   text-decoration: none;
   background-color: #EEE;
@@ -26,17 +26,17 @@
   width: 100%;
 }
 
-.todo-list-title a:hover {
+.todo-list-titel a:hover {
   color: #2c3a41;
   background-color: #e6e6e6;
 }
 
-.todo-list-title a:active {
+.todo-list-titel a:active {
   background-color: #525252;
   color: #fafafa;
 }
 
-.todo-list-title .badge {
+.todo-list-titel .badge {
   display: inline-block;
   font-size: small;
   color: white;
