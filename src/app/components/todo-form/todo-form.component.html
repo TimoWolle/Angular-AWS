@@ -1,15 +1,10 @@
-<div>
-  <div>
-    <label>ID:</label>
-    <input type="number" [(ngModel)]="todo.id">
-  </div>
-  <div>
-    <label>Name:</label>
-    <input type="text" [(ngModel)]="todo.title">
-  </div>
-  <div>
-    <label>Erledigt:</label>
-    <input type="checkbox" [(ngModel)] ="todo.status">
-  </div>
+<div class="todo-form">
+
+  <div class="todo-id">ID: <input type="number" [(ngModel)]="todo.id"></div>
+
+  <div>Name: <input type="text" [(ngModel)]="todo.title"></div>
+
+  <div>Status: <input type="checkbox" [(ngModel)] ="todo.status"></div>
+
   <button (click)="onSubmit()">Speichern</button>
 </div>

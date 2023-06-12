@@ -2,13 +2,37 @@ import {Injectable} from '@angular/core';
 import {Observable, of} from "rxjs";
 import {todo} from "./entity/todo";
 import {todos} from "../todos";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  private apiUrl = 'http://localhost:8080/api/todos'; // Beispiel-URL der API
+
+  getTodos() {
+    return this.http.get<any[]>(this.apiUrl);
+  }
+
+  addTodo(todo: any) {
+    return this.http.post<any>(this.apiUrl, todo);
+  }
+
+  updateTodo(todo: any) {
+    const url = `${this.apiUrl}/${todo.id}`;
+    return this.http.put<any>(url, todo);
+  }
+
+  deleteTodo(id: number) {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.delete<any>(url);
+  }
+
+
+
 
   getToDos(): todo[] {
     return todos;
