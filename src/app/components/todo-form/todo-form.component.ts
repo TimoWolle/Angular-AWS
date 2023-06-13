@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../../todo.service';
 import {todo} from "../../entity/todo";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {todos} from "../../../todos";
 
 @Component({
@@ -14,21 +14,21 @@ export class TodoFormComponent implements OnInit {
 
   constructor(
       private todoService: TodoService,
-      private route: ActivatedRoute) { }
+      private route: ActivatedRoute,
+      private router: Router) { }
 
   ngOnInit() {
     this.checkEdit()
   }
   onSubmit() {
     if(this.todo.id == 0){
-      this.todoService.addTodo(this.todo)
+      this.todoService.addTodo(this.todo).subscribe()
     }else{
-      this.todoService.updateTodo(this.todo)
+      this.todoService.updateTodo(this.todo).subscribe()
     }
 
+    this.router.navigateByUrl("/todolist")
     //this.todoService.saveTodoToTodos(this.todo);
-
-    this.todo= new todo(0, "", "IN_PROGRESS");
   }
 
   checkEdit(){

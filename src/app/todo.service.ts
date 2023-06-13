@@ -24,14 +24,14 @@ export class TodoService {
     return this.http.get<todo>(url, { headers });
   }
 
-  addTodo(todo: any) {
+  addTodo(todo: todo) {
     const headers = this.createHeaders();
 
     return this.http.post<todo>(this.apiUrl, todo, { headers });
   }
 
-  updateTodo(todo: any) {
-    const url = `${this.apiUrl}/${todo.id}`;
+  updateTodo(todo: todo) {
+    const url = `${this.apiUrl}`;
     const headers = this.createHeaders();
 
     return this.http.put<todo>(url, todo, { headers });
@@ -41,7 +41,7 @@ export class TodoService {
     const url = `${this.apiUrl}/${id}`;
     const headers = this.createHeaders();
 
-    return this.http.delete(url, { headers }).pipe();
+    return this.http.delete(url, { headers });
   }
 
   private createHeaders() {

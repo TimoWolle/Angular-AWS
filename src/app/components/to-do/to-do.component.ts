@@ -11,7 +11,7 @@ import {TodoService} from "../../todo.service";
 })
 export class ToDoComponent implements OnInit{
 
-  @Input() todo!:todo;
+  @Input() todo:todo = new todo(0,"","");
 
   constructor(
     private route: ActivatedRoute,
@@ -33,12 +33,7 @@ export class ToDoComponent implements OnInit{
     this.location.back()
   }
 
-  edit(): void {
-    this.location.back()
-  }
-
   delete(id: number): void {
     this.todoService.deleteTodo(id).subscribe(() => console.log("user deleted"));
-    this.goBack();
   }
 }
