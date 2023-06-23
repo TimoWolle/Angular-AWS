@@ -30,10 +30,11 @@ export class ToDoComponent implements OnInit{
   }
 
   goBack(): void {
-    this.location.back()
+    this.location.back();
   }
 
   delete(id: number): void {
     this.todoService.deleteTodo(id).subscribe(() => console.log("user deleted"));
+    this.goBack();
   }
 }
